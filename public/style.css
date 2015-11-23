@@ -7,3 +7,9 @@
 .container{
 	padding: 20px;
 }
+.tweet{
+	font-size: 20px;
+}
+.screen_name{
+	font-size: 14px;
+}

@@ -6,7 +6,7 @@ var appendTweet = function (data) {
 	console.log(data);
 	if(data.tweets){ //if any tweet returned
 		data.tweets.forEach(function(t){
-			$('#tweetTable > tbody:last').append('<tr><td><p>' + t.text 
+			$('#tweetTable > tbody:last').append('<tr><td><p class="tweet">' + t.text 
 				+ '</p><p class="screen_name">@' + t.screen_name + '</p></td></tr>');
 		});
 		MAX_ID = data.max_id;
