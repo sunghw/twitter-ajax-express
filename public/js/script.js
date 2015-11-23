@@ -17,7 +17,7 @@ $(document).ready(function() {
 	$('form').submit( function(event){
 		event.preventDefault();
 		
-		//reset: remove childeren under twitterFeeds.
+		//reset: remove childeren under tweetTable.
 		$('#tweetTable > tbody').empty();
 		
 		screen_name = $('input[name=screen_name]').val();
