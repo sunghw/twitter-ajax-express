@@ -9,7 +9,6 @@ app.use(middleware.logger); //application level middleware
 app.use(express.static(__dirname + '/public'));
 	//default redirects '/' to abovedir/index.html
 
-
 app.get('/getTweets', function (req, res) {
 	console.log("Server got GET /getTweets ");
 	console.log(req.query);
