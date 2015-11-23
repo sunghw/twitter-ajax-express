@@ -49,6 +49,4 @@ app.listen(PORT, function(){//callback fn once the server starts.
 	console.log('express server started on port:' + PORT);
 }); //which port to listen to
 
-// var count = 0;
-
 
