@@ -3,19 +3,42 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
-<p>Put a twitter handle. </p>
-<div>
-<form id="target" >
-	Twitter Handle: <br>
-	<input type="text" name="screen_name"> <!--pass the text value-->
-	<input type="submit" value="Submit">
-</form>
+<div></div>
 
-<div id="twitterFeeds">
+<div>
+<div class="container">
+	<form id="target" class="form-inline">
+		
+		<div class="form-group">
+		    <label for="twitHandle">Twitter Handle</label>
+		    <input type="text" class="form-control" id="twitHandle" name="screen_name" placeholder="Twitter Handle">
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+		
+	</form>
+	
+	<table class="table" id="tweetTable">
+		<thead>
+			<tr><th>Tweets</th></tr>
+		</thead>
+		<tbody id="tweetsBody">
+			<tr>
+	          <td><p>twit text goes here</p> <p>@handle</p></td>
+	        </tr>
+	        <tr>
+	          <td><p>twit2 text goes here</p> <p>@handle</p></td>
+	        </tr>
+		</tbody>
+	</table>
+	<div id="twitterFeeds" class="bs-example">
 </div>
+
+</div>
+<br>
 
 </div>
 

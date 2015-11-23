@@ -1,27 +1,32 @@
 var MAX_ID = 0;
 var DEFAULT_COUNT = 20;
 var screen_name = "";
+
+var appendTweet = function (data) {
+	console.log(data);
+	if(data.tweets){ //if any tweet returned
+		data.tweets.forEach(function(t){
+			$('#tweetTable > tbody:last').append('<tr><td><p>' + t.text 
+				+ '</p><p class="screen_name">@' + t.screen_name + '</p></td></tr>');
+		});
+		MAX_ID = data.max_id;
+	}
+}
+
 $(document).ready(function() {
 	$('form').submit( function(event){
 		event.preventDefault();
 		
 		//reset: remove childeren under twitterFeeds.
-		$('#twitterFeeds').children('p').remove();
+		$('#tweetTable > tbody').empty();
 		
 		screen_name = $('input[name=screen_name]').val();
 		console.log("call ajax for input screen_name " + screen_name);
+		
 		$.get('/getTweets', {
 			screen_name : screen_name,
 			count : DEFAULT_COUNT
-		}, function (data) {
-			console.log(data);
-			
-			data.tweets.forEach(function(t){
-				$('#twitterFeeds').append('<p>' + t.text + '</p>');
-			});
-			MAX_ID = data.max_id;
-			
-		});
+		}, appendTweet);
 	
 	});
 	//if window's bottom has reached, load more.
@@ -34,15 +39,7 @@ $(document).ready(function() {
 					screen_name : screen_name,
 					count : DEFAULT_COUNT,
 					max_id : MAX_ID
-				}, function (data) {
-					console.log(data);
-					if(data.tweets){ //if any tweet returned
-						data.tweets.forEach(function(t){
-							$('#twitterFeeds').append('<p>' + t.text + '</p>');
-						});
-						MAX_ID = data.max_id;
-					}
-				});
+				}, appendTweet);
 		   	}
 	   	}
 
@@ -50,3 +47,5 @@ $(document).ready(function() {
 	});
 
 });
+
+

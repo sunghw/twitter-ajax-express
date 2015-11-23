@@ -15,26 +15,25 @@ app.get('/getTweets', function (req, res) {
 	console.log(req.query);
 	getTimeline(req.query, res);
 });
-// app.get('/getMoreTweets', function (req, res){
-// 	console.log("Server got GET /getMoreTweets");
-// 	console.log(req.query);
-// 	//pass screen_name, count, maxid.
-// 	getTimeline(req.query, res);
 
-// });
 function getTimeline( params, res){
 	twitter.get('statuses/user_timeline',
 		params,
 		function (error, tweets, response){
 			if(!error && tweets.length > 0){
+
 				if(params.max_id){
 					tweets.shift(); //remove first element with max_id ; 
 				}
 				if(tweets.length > 0){
 					var tweetsResp = [];
 					tweets.forEach(function(tweet){
-						console.log(tweet.id + " : " + tweet.text);
-						var t = {id : tweet.id, text: tweet.text};
+						
+						var t = {
+							id : tweet.id, 
+							text: tweet.text, 
+							screen_name: tweet.user.screen_name};
+						console.log(t);
 						tweetsResp.push(t);
 					});
 					params.max_id = tweets[tweets.length - 1].id;
